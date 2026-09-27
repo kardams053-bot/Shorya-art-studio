@@ -1,6 +1,13 @@
-# Shorya Art Studio
-Complete website project with artwork gallery, pricing, order fields, Instagram, delivery details and pay-after-sketch-confirmation workflow.
+Shorya Art Studio - Updated Customer + Admin
 
-Instagram: @artistic_shorya
-Deploy `index.html` as a Render Static Site or GitHub Pages site.
-Before launch connect real WhatsApp/order notifications, secure uploads and a production payment gateway.
+Upload these files to the ROOT of your GitHub repository:
+- index.html
+- admin.html
+- SamsungPay_QR.png
+
+Payment calculation:
+- 25%: artwork charge only
+- 50%: artwork charge only
+- 100%: artwork + full delivery charge
+
+Keep index.html and admin.html in the same root folder.

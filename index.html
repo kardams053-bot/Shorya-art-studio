@@ -128,9 +128,9 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div class="field"><label>COMPLETE DELIVERY ADDRESS</label><textarea id="address" rows="3" placeholder="House/Flat No., Street, Area, City, State, PIN/ZIP Code"></textarea></div>
 </div>
 <div class="field"><label>SPECIAL INSTRUCTIONS</label><textarea id="instructions" rows="3" placeholder="Any special request for the artwork or delivery (optional)"></textarea></div>
-<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
+<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount" onchange="updatePayAmount()"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Payment</option></select><div id="payAmount" style="margin-top:10px;font-size:18px;font-weight:700;color:#f0d08b">Pay Now: ₹200</div><small id="paymentCalculationNote" style="display:block;margin-top:6px;opacity:.8">25% = Artwork charge only; delivery added at 100% payment.</small></div><div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
 <div class="field"><label>PAYMENT SCREENSHOT / RECEIPT *</label><small id="paymentStatus" style="display:block;margin-top:8px;opacity:.75">Order button dabane ke baad QR se payment karein, phir payment window mein screenshot upload karein.</small></div>
-<div class="total">Artwork: ₹<span id="total">799</span> + Delivery charges</div>
+<div class="total">Artwork: ₹<span id="total">799</span><br><small style="font-size:13px;color:#c8beb6">Delivery: <span id="deliveryAmount">Calculated at checkout</span></small></div>
 <button type="button" onclick="startPayment()">💳 Pay Advance & Submit Order →</button>
 </div></section>
 
@@ -175,11 +175,46 @@ const art = document.getElementById("art");
 const people = document.getElementById("people");
 const total = document.getElementById("total");
 
-function calc(){ total.textContent = Math.round(Number(art.value) * Number(people.value)); }
+function getArtworkTotal(){ return Math.round(Number(art.value) * Number(people.value)); }
+function getDeliveryCharge(){
+  const country = document.getElementById("country").value.trim();
+  if(country === "India") return 80;
+  if(country && country !== "Select Country") return 1500;
+  return 0;
+}
+function calc(){
+  const artworkTotal = getArtworkTotal();
+  const delivery = getDeliveryCharge();
+  total.textContent = artworkTotal.toLocaleString("en-IN");
+  const deliveryEl = document.getElementById("deliveryAmount");
+  if(deliveryEl) deliveryEl.textContent = delivery ? `₹${delivery.toLocaleString("en-IN")} (added only at 100% payment)` : "Calculated at checkout";
+  updatePayAmount();
+}
 art.onchange = calc; people.onchange = calc;
+document.getElementById("country").onchange = calc;
 function cleanPhone(value){ return value.replace(/[^\d+]/g, "").trim(); }
 function updatePaymentOption(){ document.getElementById("advanceBox").style.display="block"; }
-function getAdvanceDue(){ return Math.round(Number(art.value) * Number(people.value) * Number(document.getElementById("advanceAmount").value) / 100); }
+function getAdvanceDue(){
+  const artworkTotal = getArtworkTotal();
+  const advance = Number(document.getElementById("advanceAmount").value);
+  const delivery = getDeliveryCharge();
+  return Math.round(artworkTotal * advance / 100) + (advance === 100 ? delivery : 0);
+}
+function updatePayAmount(){
+  const el = document.getElementById("payAmount");
+  const note = document.getElementById("paymentCalculationNote");
+  if(!el) return;
+  const advance = Number(document.getElementById("advanceAmount").value);
+  const artworkTotal = getArtworkTotal();
+  const delivery = getDeliveryCharge();
+  const due = getAdvanceDue();
+  el.textContent = `Pay Now: ₹${due.toLocaleString("en-IN")}`;
+  if(note){
+    note.textContent = advance === 100
+      ? `100% = Artwork ₹${artworkTotal.toLocaleString("en-IN")} + Delivery ₹${delivery.toLocaleString("en-IN")}`
+      : `${advance}% = Artwork charge only ₹${Math.round(artworkTotal * advance / 100).toLocaleString("en-IN")} (delivery added at 100% payment)`;
+  }
+}
 
 async function uploadToCloudinary(file, statusId, label){
   if(!file) throw new Error(label + " is missing.");
@@ -216,7 +251,7 @@ function startPayment(){
   if(!validateCustomerForm()) return;
   const advance = document.getElementById("advanceAmount").value;
   const due = getAdvanceDue();
-  document.getElementById("advanceDue").textContent = `Pay ₹${due.toLocaleString('en-IN')} (${advance}% advance)`;
+  document.getElementById("advanceDue").textContent = `Pay ₹${due.toLocaleString('en-IN')} (${advance}% ${advance === "100" ? "full payment" : "advance"})`;
   document.getElementById("summary").innerHTML = `1) Scan the QR and pay the advance. 2) Upload the payment screenshot below. 3) Tap <strong>I Have Paid — Submit Order</strong>.`;
   document.getElementById("modal").classList.add("show");
 }
@@ -243,11 +278,13 @@ async function submitPaidOrder(){
     const orderId = "SA-" + Date.now().toString().slice(-8);
     const artworkName = art.options[art.selectedIndex].text;
     const peopleText = people.options[people.selectedIndex].text;
-    const artworkPrice = Math.round(Number(art.value) * Number(people.value));
+    const artworkPrice = getArtworkTotal();
+    const deliveryCharge = getDeliveryCharge();
+    const paidAmount = getAdvanceDue();
     const peopleCount = Number(people.value);
     const orderRecord = {
       order_id: orderId, customer_name: name, whatsapp: customerWhatsApp, country, address, instructions,
-      artwork: artworkName, size: "", people: peopleCount, total: artworkPrice, payment_option: `${advance}% Advance`,
+      artwork: artworkName, size: "", people: peopleCount, total: artworkPrice, payment_option: `${advance}% ${advance === "100" ? "Full Payment" : "Advance"} — Paid ₹${paidAmount}; Delivery ₹${advance === "100" ? deliveryCharge : 0}`,
       reference_url: photoUrl, payment_screenshot_url: paymentUrl, status: "PENDING"
     };
     const { error: dbError } = await supabaseClient.from("orders").insert(orderRecord);
@@ -262,8 +299,8 @@ async function submitPaidOrder(){
 🎨 Artwork: ${artworkName}
 👥 People: ${peopleText}
 💰 Artwork Total: ₹${artworkPrice}
-🚚 Delivery: Separate (as applicable)
-💳 Advance: ${advance}%
+🚚 Delivery Charge: ₹${advance === "100" ? deliveryCharge : 0} (added at 100% payment)
+💳 Payment: ${advance}% — Paid ₹${paidAmount}
 
 📍 Delivery Address:
 ${address}

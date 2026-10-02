@@ -149,7 +149,15 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div class="field"><label>COMPLETE DELIVERY ADDRESS</label><textarea id="address" rows="3" placeholder="House/Flat No., Street, Area, City, State, PIN/ZIP Code"></textarea></div>
 </div>
 <div class="field"><label>SPECIAL INSTRUCTIONS</label><textarea id="instructions" rows="3" placeholder="Any special request for the artwork or delivery (optional)"></textarea></div>
-<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount" onchange="calc()"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
+<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount" onchange="calc()"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div id="payNowSection" class="field" style="border:2px solid #d8b36a;border-radius:16px;padding:18px;background:linear-gradient(135deg,#fffaf0,#fff);margin-top:14px;">
+<label style="font-size:18px;font-weight:800;display:block;margin-bottom:8px">💳 PAY NOW</label>
+<p style="margin:0 0 10px">Selected advance amount: <strong>₹<span id="payNowAmount">200</span></strong></p>
+<div style="text-align:center"><img src="assets/SamsungPay_QR.png" alt="UPI QR Code" style="width:190px;max-width:80%;border-radius:12px;border:1px solid #ddd;background:#fff;padding:8px"></div>
+<p style="text-align:center;margin:10px 0 4px"><strong>UPI ID:</strong> poweredbysamsung05@pingpay</p>
+<a id="upiPayButton" href="upi://pay?pa=poweredbysamsung05@pingpay&pn=SHORYA%20KARDAM&cu=INR" style="display:block;text-align:center;text-decoration:none;padding:13px 16px;border-radius:12px;background:#111;color:#fff;font-weight:800;margin-top:12px">📲 Open UPI App & Pay</a>
+<small style="display:block;text-align:center;margin-top:8px;opacity:.75">Payment complete karne ke baad neeche payment screenshot upload karein.</small>
+</div>
+<div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
 <div class="field"><label>PAYMENT SCREENSHOT / RECEIPT *</label><input id="paymentScreenshot" type="file" accept="image/jpeg,image/png,image/webp"><small id="paymentStatus" style="display:block;margin-top:8px;opacity:.75">Payment karne ke baad screenshot/receipt upload karna mandatory hai.</small></div>
 <div class="total" style="line-height:1.8">Artwork: ₹<span id="artworkTotal">799</span><br>Delivery: ₹<span id="deliveryTotal">100</span><br><strong>Payable now: ₹<span id="payableNow">200</span></strong><small id="paymentBreakdown" style="display:block;font-size:12px;opacity:.8">25% advance on artwork; delivery is added only with 100% payment.</small></div>
 <button type="button" onclick="placeOrder()">📲 Send My Order on WhatsApp →</button>
@@ -211,6 +219,10 @@ function calc(){
   artworkTotal.textContent = artworkPrice.toLocaleString("en-IN");
   deliveryTotal.textContent = delivery ? delivery.toLocaleString("en-IN") : "—";
   payableNow.textContent = dueNow.toLocaleString("en-IN");
+  const payNowAmount = document.getElementById("payNowAmount");
+  if(payNowAmount) payNowAmount.textContent = dueNow.toLocaleString("en-IN");
+  const upiPayButton = document.getElementById("upiPayButton");
+  if(upiPayButton) upiPayButton.href = "upi://pay?pa=poweredbysamsung05@pingpay&pn=SHORYA%20KARDAM&am=" + dueNow + "&cu=INR";
   paymentBreakdown.textContent = advancePct === 100
     ? "100% full advance: artwork + full delivery included."
     : `${advancePct}% advance on artwork: delivery is not included in this advance.`;

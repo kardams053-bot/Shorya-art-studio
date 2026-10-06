@@ -130,8 +130,8 @@ function render(){
         ${o.payment_screenshot_url?`<a class="link" href="${esc(o.payment_screenshot_url)}" target="_blank" rel="noopener">💳 Payment Screenshot</a>`:''}
       </div>
       <div class="actions" style="margin-top:10px">
-        <button class="success" onclick="setStatus('${esc(o.id)}','CONFIRMED')">✅ Confirm Order</button>
-        <button class="danger" onclick="setStatus('${esc(o.id)}','REJECTED')">❌ Reject Order</button>
+        <button class="success" onclick="confirmAndNotify('${esc(o.id)}')">✅ Confirm + Notify Customer</button>
+        <button class="danger" onclick="rejectAndNotify('${esc(o.id)}')">❌ Reject + Notify Customer</button>
         ${status!=='PENDING'?`<button class="btn" style="background:#eee5d8" onclick="setStatus('${esc(o.id)}','PENDING')">↩ Mark Pending</button>`:''}
       </div>
     </article>`;
@@ -140,9 +140,36 @@ function render(){
 
 async function setStatus(id,status){
   const {error}=await supabaseClient.from('orders').update({status}).eq('id',id);
-  if(error){alert('Status update failed: '+error.message);return;}
+  if(error){alert('Status update failed: '+error.message);return false;}
   const item=orders.find(o=>o.id===id);if(item)item.status=status;
   render();toast('Order marked '+status+'.');
+  return true;
+}
+
+function customerNotifyUrl(o,status){
+  const phone=(o.whatsapp||'').replace(/[^0-9]/g,'');
+  if(!phone) return null;
+  const isConfirmed=status==='CONFIRMED';
+  const msg=isConfirmed
+    ? `🎨 SHORYA ART STUDIO\n\nHello ${o.customer_name||'Customer'}, your order ${o.order_id||''} has been CONFIRMED ✅\n\nArtwork: ${o.artwork||''}\nPayment: ${o.payment_option||''}\n\nThank you for ordering from Shorya Art Studio!`
+    : `🎨 SHORYA ART STUDIO\n\nHello ${o.customer_name||'Customer'}, your order ${o.order_id||''} could not be accepted at this time. ❌\n\nPlease contact us on WhatsApp for details.`;
+  return 'https://wa.me/'+phone+'?text='+encodeURIComponent(msg);
+}
+
+async function confirmAndNotify(id){
+  const ok=await setStatus(id,'CONFIRMED');
+  if(!ok) return;
+  const item=orders.find(o=>o.id===id);
+  const url=customerNotifyUrl(item,'CONFIRMED');
+  if(url){ window.open(url,'_blank','noopener,noreferrer'); toast('Confirmed. WhatsApp notification opened — press Send.'); }
+}
+
+async function rejectAndNotify(id){
+  const ok=await setStatus(id,'REJECTED');
+  if(!ok) return;
+  const item=orders.find(o=>o.id===id);
+  const url=customerNotifyUrl(item,'REJECTED');
+  if(url){ window.open(url,'_blank','noopener,noreferrer'); toast('Rejected. WhatsApp notification opened — press Send.'); }
 }
 
 function exportOrders(){

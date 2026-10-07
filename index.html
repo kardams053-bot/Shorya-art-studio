@@ -19,10 +19,6 @@ header{position:sticky;top:0;z-index:5;background:#211b17;color:#fff;padding:17p
 footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px Arial}
 .modal{display:none;position:fixed;inset:0;background:#000b;z-index:20;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.payment-box{background:#fff;color:#211b17;max-width:430px;width:100%;border-radius:16px;padding:25px;text-align:center}.payment-box p{font:13px Arial;color:#655b53;line-height:1.5}.pay-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.pay-options button{background:#211b17;color:#fff}.pay-options .cod{background:#eee5d8;color:#211b17}.qr{width:230px;height:230px;object-fit:contain;border:8px solid white;box-shadow:0 3px 18px #0002}.close{background:#eee5d8!important;margin-top:12px}
 @media(max-width:900px){.gallery,.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){nav{display:none}.gallery,.cards,.grid{grid-template-columns:1fr}.section{padding:55px 6%}.ad{display:block}}
-
-/* Order-focused conversion upgrades */
-.hero{min-height:76vh;display:flex;align-items:center;padding:70px 7%;background:linear-gradient(135deg,#211b17 0%,#3a2b23 55%,#8a6329 100%);color:#fff;position:relative;overflow:hidden}.hero:after{content:"🎨";position:absolute;right:7%;bottom:-25px;font-size:190px;opacity:.08}.hero>div{max-width:760px;position:relative;z-index:1}.hero h1{font-size:clamp(42px,7vw,78px);line-height:1.02;margin:12px 0}.hero p{font:18px/1.7 Arial;color:#eee;max-width:650px}.eyebrow{display:inline-block;padding:8px 13px;border:1px solid #d9a441;border-radius:999px;color:#f0d08b;font:700 12px Arial;letter-spacing:1px;text-transform:uppercase}.hero .btn{display:inline-block;width:auto;padding:16px 24px;border-radius:8px;text-decoration:none}.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:18px 7%;background:#fff;border-bottom:1px solid #eadfce}.trust-item{text-align:center;font:700 14px Arial;color:#3b3028}.trust-item span{display:block;font-size:24px;margin-bottom:5px}.order-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 30px}.step{background:#fff;padding:20px;border-radius:12px;text-align:center;border:1px solid #eadfce}.step b{display:block;font:700 15px Arial;margin:8px 0}.step span{font:13px Arial;color:#6f655d}.sticky-order{position:fixed;left:16px;right:16px;bottom:14px;z-index:20;display:none}.sticky-order a{display:block;text-align:center;background:#d9a441;color:#211b17;padding:14px;border-radius:999px;text-decoration:none;font:800 15px Arial;box-shadow:0 10px 30px #0004}.order .form{box-shadow:0 20px 50px #0005}.order .form>button{font-size:16px}.mini-note{font:12px Arial;color:#cfc5bc;text-align:center;margin-top:10px}
-@media(max-width:800px){.trust-strip{grid-template-columns:repeat(2,1fr)}.order-steps{grid-template-columns:1fr}.sticky-order{display:block}}
 </style>
 
 <style>textarea{width:100%;resize:vertical;box-sizing:border-box;font-family:inherit;}</style>
@@ -36,19 +32,11 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 </nav></header>
 
 <section class="hero"><div>
-<div class="eyebrow">Handmade • Custom • Pan India Delivery</div>
-<h1>Turn your favourite photo into a handmade portrait.</h1>
-<p>Custom pencil, pencil-colour, pen-sketch and oil-pastel portraits by Shorya. Choose your artwork, upload your photo and place your order in a few simple steps.</p>
-<div style="font:800 22px Arial;color:#f0d08b;margin:18px 0 22px">Portraits starting from ₹699</div>
-<a class="btn" href="#order">🎨 Start My Order</a>
+<div class="eyebrow">Handcrafted • Custom • Original</div>
+<h1>Art that feels personal.</h1>
+<p>Custom pencil, colour-pencil, charcoal and oil-pastel artwork, carefully created by Shorya from your favourite photographs.</p>
+<a class="btn" href="#order">Order Your Artwork →</a>
 </div></section>
-
-<div class="trust-strip">
-<div class="trust-item"><span>✏️</span>Handmade Artwork</div>
-<div class="trust-item"><span>📷</span>Your Photo → Portrait</div>
-<div class="trust-item"><span>🇮🇳</span>Pan India Delivery</div>
-<div class="trust-item"><span>💳</span>25% / 50% / 100% Advance</div>
-</div>
 
 <section class="section" id="gallery">
 <h2 class="title">My Artwork — Sample Portraits</h2>
@@ -70,19 +58,19 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div style="overflow-x:auto;margin-bottom:38px"><table style="width:100%;max-width:900px;margin:auto;border-collapse:collapse;background:#fff;font:15px Arial">
 <thead><tr style="background:#211b17;color:#fff"><th style="padding:15px;text-align:left">🎨 Artwork Type</th><th style="padding:15px">A4</th><th style="padding:15px">A3</th></tr></thead>
 <tbody>
-<tr><td style="padding:14px;border-bottom:1px solid #eee">✏️ Pencil Sketch Portrait</td><td style="text-align:center">₹799</td><td style="text-align:center">₹1,299</td></tr>
+<tr><td style="padding:14px;border-bottom:1px solid #eee">✏️ Pencil Sketch Portrait</td><td style="text-align:center">₹599</td><td style="text-align:center">₹1,199</td></tr>
 <tr><td style="padding:14px;border-bottom:1px solid #eee">🖍️ Pencil Colour Portrait</td><td style="text-align:center">₹999</td><td style="text-align:center">₹1,599</td></tr>
-<tr><td style="padding:14px;border-bottom:1px solid #eee">🖊️ Pen Sketch Portrait</td><td style="text-align:center">₹699</td><td style="text-align:center">₹1,199</td></tr>
+<tr><td style="padding:14px;border-bottom:1px solid #eee">🖊️ Pen Sketch Portrait</td><td style="text-align:center">₹799</td><td style="text-align:center">₹1,399</td></tr>
 <tr><td style="padding:14px">🧑‍🎨 Oil Pastel Portrait</td><td style="text-align:center">₹1,299</td><td style="text-align:center">₹1,999</td></tr>
 </tbody></table></div>
 
 <h3 style="text-align:center;margin:0 0 18px;font-size:28px">👩‍❤️‍👨 COUPLE PORTRAIT</h3>
 <div style="overflow-x:auto;margin-bottom:38px"><table style="width:100%;max-width:900px;margin:auto;border-collapse:collapse;background:#fff;font:15px Arial">
-<thead><tr style="background:#5a3d24;color:#fff"><th style="padding:15px;text-align:left">Type</th><th style="padding:15px">A4</th><th style="padding:15px">A3</th></tr></thead>
+<thead><tr style="background:#5a3d24;color:#fff"><th style="padding:15px;text-align:left">Type</th><th style="padding:15px">A3</th><th style="padding:15px">A2</th></tr></thead>
 <tbody>
-<tr><td style="padding:14px;border-bottom:1px solid #eee">Couple Pencil Sketch</td><td style="text-align:center">₹1,299</td><td style="text-align:center">₹1,999</td></tr>
-<tr><td style="padding:14px;border-bottom:1px solid #eee">Couple Pencil Colour</td><td style="text-align:center">₹1,599</td><td style="text-align:center">₹2,399</td></tr>
-<tr><td style="padding:14px">Couple Oil Pastel</td><td style="text-align:center">₹1,799</td><td style="text-align:center">₹2,699</td></tr>
+<tr><td style="padding:14px;border-bottom:1px solid #eee">Couple Pencil Sketch</td><td style="text-align:center">₹1,999</td><td style="text-align:center">₹2,999</td></tr>
+<tr><td style="padding:14px;border-bottom:1px solid #eee">Couple Pencil Colour</td><td style="text-align:center">₹2,399</td><td style="text-align:center">₹3,899</td></tr>
+<tr><td style="padding:14px">Couple Oil Pastel</td><td style="text-align:center">₹2,699</td><td style="text-align:center">₹3,599</td></tr>
 </tbody></table></div>
 
 <h3 style="text-align:center;margin:0 0 18px;font-size:28px">👨‍👩‍👧 FAMILY PORTRAIT</h3>
@@ -104,41 +92,32 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 </div></div>
 </section>
 
-<section class="section" style="padding-bottom:25px">
-<h2 class="title">How Your Order Works</h2>
-<p class="sub">Simple 3-step process — choose, upload, order.</p>
-<div class="order-steps">
-<div class="step"><div style="font-size:32px">🎨</div><b>1. Choose Your Portrait</b><span>Select artwork type and size from the price list.</span></div>
-<div class="step"><div style="font-size:32px">📷</div><b>2. Upload Your Photos</b><span>Upload your reference photo and payment receipt.</span></div>
-<div class="step"><div style="font-size:32px">📲</div><b>3. Send Your Order</b><span>Review the details and send the order on WhatsApp.</span></div>
-</div></section>
-
 <section class="section order" id="order">
-<h2 class="title">🎨 Start Your Custom Portrait</h2><p class="sub">Fill the form, choose your advance payment option, upload your reference photo + payment receipt, and send your order on WhatsApp.</p>
+<h2 class="title">Place Your Order</h2><p class="sub">Submit your artwork details first. Then choose Online Payment or COD.</p>
 <div class="form">
 <div class="grid"><div class="field"><label>YOUR NAME</label><input id="name" placeholder="Your name"></div><div class="field"><label>WHATSAPP NUMBER</label><input id="customerWhatsApp" type="tel" placeholder="+91 XXXXX XXXXX" autocomplete="tel"></div></div>
 <div class="grid"><div class="field"><label>ARTWORK</label><select id="art">
-<option value="799">Pencil Sketch Portrait — A4</option>
-<option value="1299">Pencil Sketch Portrait — A3</option>
+<option value="599">Pencil Sketch Portrait — A4</option>
+<option value="1199">Pencil Sketch Portrait — A3</option>
 <option value="999">Pencil Colour Portrait — A4</option>
 <option value="1599">Pencil Colour Portrait — A3</option>
-<option value="699">Pen Sketch Portrait — A4</option>
-<option value="1199">Pen Sketch Portrait — A3</option>
+<option value="799">Pen Sketch Portrait — A4</option>
+<option value="1399">Pen Sketch Portrait — A3</option>
 <option value="1299">Oil Pastel Portrait — A4</option>
 <option value="1999">Oil Pastel Portrait — A3</option>
-<option value="1299">Couple Pencil Sketch — A4</option>
 <option value="1999">Couple Pencil Sketch — A3</option>
-<option value="1599">Couple Pencil Colour — A4</option>
+<option value="2999">Couple Pencil Sketch — A2</option>
 <option value="2399">Couple Pencil Colour — A3</option>
-<option value="1799">Couple Oil Pastel — A4</option>
+<option value="3899">Couple Pencil Colour — A2</option>
 <option value="2699">Couple Oil Pastel — A3</option>
+<option value="3599">Couple Oil Pastel — A2</option>
 <option value="1599">Family Pencil Sketch — A4</option>
 <option value="2499">Family Pencil Sketch — A3</option>
 <option value="1899">Family Pencil Colour — A4</option>
 <option value="2899">Family Pencil Colour — A3</option>
 <option value="2199">Family Oil Pastel — A4</option>
 <option value="3299">Family Oil Pastel — A3</option>
-</select></div><div class="field"><label>PEOPLE</label><select id="people"><option value="1">1 Person</option><option value="2">2 People</option><option value="3">3 People</option><option value="4">4 People</option><option value="5">5 People</option></select></div></div>
+</select></div><div class="field"><label>PEOPLE</label><select id="people"><option value="1">1 Person</option><option value="1.55">2 People</option></select></div></div>
 <div class="grid">
 <div class="field"><label>COUNTRY</label><select id="country">
 <option value="">Select Country</option>
@@ -149,22 +128,12 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div class="field"><label>COMPLETE DELIVERY ADDRESS</label><textarea id="address" rows="3" placeholder="House/Flat No., Street, Area, City, State, PIN/ZIP Code"></textarea></div>
 </div>
 <div class="field"><label>SPECIAL INSTRUCTIONS</label><textarea id="instructions" rows="3" placeholder="Any special request for the artwork or delivery (optional)"></textarea></div>
-<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount" onchange="calc()"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div id="payNowSection" class="field" style="border:2px solid #d8b36a;border-radius:16px;padding:18px;background:linear-gradient(135deg,#fffaf0,#fff);margin-top:14px;">
-<label style="font-size:18px;font-weight:800;display:block;margin-bottom:8px">💳 PAY NOW</label>
-<p style="margin:0 0 10px">Selected advance amount: <strong>₹<span id="payNowAmount">200</span></strong></p>
-<div style="text-align:center"><img src="assets/SamsungPay_QR.png" alt="UPI QR Code" style="width:190px;max-width:80%;border-radius:12px;border:1px solid #ddd;background:#fff;padding:8px"></div>
-<p style="text-align:center;margin:10px 0 4px"><strong>UPI ID:</strong> poweredbysamsung05@pingpay</p>
-<a id="upiPayButton" href="upi://pay?pa=poweredbysamsung05@pingpay&pn=SHORYA%20KARDAM&cu=INR" style="display:block;text-align:center;text-decoration:none;padding:13px 16px;border-radius:12px;background:#111;color:#fff;font-weight:800;margin-top:12px">📲 Open UPI App & Pay</a>
-<small style="display:block;text-align:center;margin-top:8px;opacity:.75">Payment complete karne ke baad neeche payment screenshot upload karein.</small>
-</div>
-<div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
+<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
 <div class="field"><label>PAYMENT SCREENSHOT / RECEIPT *</label><input id="paymentScreenshot" type="file" accept="image/jpeg,image/png,image/webp"><small id="paymentStatus" style="display:block;margin-top:8px;opacity:.75">Payment karne ke baad screenshot/receipt upload karna mandatory hai.</small></div>
-<div class="total" style="line-height:1.8">Artwork: ₹<span id="artworkTotal">799</span><br>Delivery: ₹<span id="deliveryTotal">100</span><br><strong>Payable now: ₹<span id="payableNow">200</span></strong><small id="paymentBreakdown" style="display:block;font-size:12px;opacity:.8">25% advance on artwork; delivery is added only with 100% payment.</small></div>
-<button type="button" onclick="placeOrder()">📲 Send My Order on WhatsApp →</button>
-<div class="mini-note">Reference photo + payment receipt are uploaded before the WhatsApp order is prepared.</div>
+<div class="total">Artwork: ₹<span id="total">799</span> + Delivery charges</div>
+<button type="button" onclick="placeOrder()">📲 Send Order on WhatsApp →</button>
 </div></section>
 
-<div class="sticky-order"><a href="#order">🎨 Order Your Custom Portrait — Starting ₹699</a></div>
 <footer>© 2026 Shorya Art Studio • Custom Handmade Artwork
 <section class="instagram-section" id="instagram">
   <div class="container">
@@ -194,46 +163,24 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 
 </div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://axyojwdqtcirqpjjyjsu.supabase.co";
-const SUPABASE_KEY = "sb_publishable_vFqkuKQnOkDrVUBbjRZ9kw_OugGwuLg";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_vFqkuKQnOkDrVUBbjRZ9kw_OugGwuLg";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+</script>
+
 const CLOUDINARY_CLOUD_NAME = "jtfevsxe";
 const CLOUDINARY_UPLOAD_PRESET = "Shorya art orders";
 const OWNER_WHATSAPP = "919997102310";
 const art = document.getElementById("art");
 const people = document.getElementById("people");
-const artworkTotal = document.getElementById("artworkTotal");
-const deliveryTotal = document.getElementById("deliveryTotal");
-const payableNow = document.getElementById("payableNow");
-const paymentBreakdown = document.getElementById("paymentBreakdown");
+const total = document.getElementById("total");
 
-function getDelivery(){
-  const country = document.getElementById("country").value.trim().toLowerCase();
-  return country === "india" ? 100 : (country ? 1500 : 0);
-}
-function calc(){
-  const artworkPrice = Math.round(Number(art.value));
-  const delivery = getDelivery();
-  const advancePct = Number(document.getElementById("advanceAmount").value || 25);
-  const dueNow = advancePct === 100 ? artworkPrice + delivery : Math.round(artworkPrice * advancePct / 100);
-  artworkTotal.textContent = artworkPrice.toLocaleString("en-IN");
-  deliveryTotal.textContent = delivery ? delivery.toLocaleString("en-IN") : "—";
-  payableNow.textContent = dueNow.toLocaleString("en-IN");
-  const payNowAmount = document.getElementById("payNowAmount");
-  if(payNowAmount) payNowAmount.textContent = dueNow.toLocaleString("en-IN");
-  const upiPayButton = document.getElementById("upiPayButton");
-  if(upiPayButton) upiPayButton.href = "upi://pay?pa=poweredbysamsung05@pingpay&pn=SHORYA%20KARDAM&am=" + dueNow + "&cu=INR";
-  paymentBreakdown.textContent = advancePct === 100
-    ? "100% full advance: artwork + full delivery included."
-    : `${advancePct}% advance on artwork: delivery is not included in this advance.`;
-}
-art.onchange = calc;
-people.onchange = calc;
-document.getElementById("country").onchange = calc;
-document.getElementById("advanceAmount").onchange = calc;
-calc();
+function calc(){ total.textContent = Math.round(Number(art.value) * Number(people.value)); }
+art.onchange = calc; people.onchange = calc;
 function cleanPhone(value){ return value.replace(/[^\d+]/g, "").trim(); }
-function updatePaymentOption(){ document.getElementById("advanceBox").style.display="block"; calc(); }
+function updatePaymentOption(){ document.getElementById("advanceBox").style.display="block"; }
 
 async function uploadToCloudinary(file, statusId, label){
   if(!file) throw new Error(label + " is missing.");
@@ -280,32 +227,16 @@ async function placeOrder(){
     const orderId = "SA-" + Date.now().toString().slice(-8);
     const artworkName = art.options[art.selectedIndex].text;
     const peopleText = people.options[people.selectedIndex].text;
-    const artworkPrice = Math.round(Number(art.value));
+    const artworkPrice = Math.round(Number(art.value) * Number(people.value));
 
+    const peopleCount = Number(people.value);
     const orderRecord = {
-      orderId, name, customerWhatsApp, country, address, instructions, artworkName,
-      people: peopleText, artworkPrice, advance: Number(advance), photoUrl, paymentUrl,
-      status: "PENDING", createdAt: new Date().toISOString()
-    };
-    const existingOrders = JSON.parse(localStorage.getItem("shoryaOrders") || "[]");
-    existingOrders.unshift(orderRecord);
-    localStorage.setItem("shoryaOrders", JSON.stringify(existingOrders.slice(0, 200)));
-    const delivery = country.toLowerCase() === "india" ? 100 : 1500;
-    const advancePct = Number(advance);
-    const payableAmount = advancePct === 100 ? artworkPrice + delivery : Math.round(artworkPrice * advancePct / 100);
-    const dbPayload = {
       order_id: orderId, customer_name: name, whatsapp: customerWhatsApp, country, address, instructions,
-      artwork: artworkName, size: artworkName.includes("A3") ? "A3" : "A4",
-      people: Math.max(1, Math.round(Number(people.value))), total: payableAmount,
-      payment_option: `${advancePct}% Advance`, reference_url: photoUrl,
-      payment_screenshot_url: paymentUrl, status: "PENDING"
+      artwork: artworkName, size: "", people: peopleCount, total: artworkPrice, payment_option: `${advance}% Advance`,
+      reference_url: photoUrl, payment_screenshot_url: paymentUrl, status: "PENDING"
     };
-    const dbResponse = await fetch(SUPABASE_URL + "/rest/v1/orders", {
-      method: "POST", headers: {"apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", "Prefer": "return=minimal"},
-      body: JSON.stringify(dbPayload)
-    });
-    if(!dbResponse.ok){ let detail=""; try{detail=await dbResponse.text()}catch(e){} throw new Error("Order database save failed. "+detail); }
-
+    const { error: dbError } = await supabaseClient.from("orders").insert(orderRecord);
+    if (dbError) throw new Error("Order database save failed: " + dbError.message);
 
     const message = `🎨 NEW SHORYA ART STUDIO ORDER
 
@@ -317,9 +248,8 @@ async function placeOrder(){
 🎨 Artwork: ${artworkName}
 👥 People: ${peopleText}
 💰 Artwork Total: ₹${artworkPrice}
-🚚 Delivery: ₹${delivery} (${country === "India" ? "India" : "Outside India"})
+🚚 Delivery: Separate (as applicable)
 💳 Advance: ${advance}%
-💵 Payable Now: ₹${payableAmount}
 
 📍 Delivery Address:
 ${address}
@@ -338,7 +268,7 @@ ${paymentUrl}
 Seller action: Reply CONFIRM ORDER to confirm or REJECT ORDER to reject this order.`;
 
     const waUrl = "https://wa.me/" + OWNER_WHATSAPP + "?text=" + encodeURIComponent(message);
-    document.getElementById("summary").innerHTML = `Order <strong>${orderId}</strong> is ready. WhatsApp will open with the order details, reference-photo link and payment-receipt link. Please press Send.`;
+    document.getElementById("summary").innerHTML = `Order <strong>${orderId}</strong> has been saved securely. WhatsApp will open with the order details. Please press Send.`;
     document.getElementById("modal").classList.add("show");
     window.open(waUrl, "_blank", "noopener,noreferrer");
   }catch(e){

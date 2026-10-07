@@ -118,33 +118,27 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div class="form">
 <div class="grid"><div class="field"><label>YOUR NAME</label><input id="name" placeholder="Your name"></div><div class="field"><label>WHATSAPP NUMBER</label><input id="customerWhatsApp" type="tel" placeholder="+91 XXXXX XXXXX" autocomplete="tel"></div></div>
 <div class="grid"><div class="field"><label>ARTWORK</label><select id="art">
-<option value="599">Pencil Sketch Portrait — A4</option>
-<option value="1199">Pencil Sketch Portrait — A3</option>
+<option value="799">Pencil Sketch Portrait — A4</option>
+<option value="1299">Pencil Sketch Portrait — A3</option>
 <option value="999">Pencil Colour Portrait — A4</option>
 <option value="1599">Pencil Colour Portrait — A3</option>
-<option value="799">Pen Sketch Portrait — A4</option>
-<option value="1399">Pen Sketch Portrait — A3</option>
+<option value="699">Pen Sketch Portrait — A4</option>
+<option value="1199">Pen Sketch Portrait — A3</option>
 <option value="1299">Oil Pastel Portrait — A4</option>
 <option value="1999">Oil Pastel Portrait — A3</option>
 <option value="1299">Couple Pencil Sketch — A4</option>
 <option value="1999">Couple Pencil Sketch — A3</option>
-<option value="2999">Couple Pencil Sketch — A2</option>
 <option value="1599">Couple Pencil Colour — A4</option>
 <option value="2399">Couple Pencil Colour — A3</option>
-<option value="3899">Couple Pencil Colour — A2</option>
 <option value="1799">Couple Oil Pastel — A4</option>
 <option value="2699">Couple Oil Pastel — A3</option>
-<option value="3599">Couple Oil Pastel — A2</option>
 <option value="1599">Family Pencil Sketch — A4</option>
 <option value="2499">Family Pencil Sketch — A3</option>
-<option value="3299">Family Pencil Sketch — A2</option>
 <option value="1899">Family Pencil Colour — A4</option>
 <option value="2899">Family Pencil Colour — A3</option>
-<option value="3899">Family Pencil Colour — A2</option>
 <option value="2199">Family Oil Pastel — A4</option>
 <option value="3299">Family Oil Pastel — A3</option>
-<option value="3799">Family Oil Pastel — A2</option>
-</select></div><div class="field"><label>PEOPLE</label><select id="people"><option value="1">1 Person</option><option value="1.55">2 People</option></select></div></div>
+</select></div><div class="field"><label>PEOPLE</label><select id="people"><option value="1">1 Person</option><option value="2">2 People</option><option value="3">3 People</option><option value="4">4 People</option><option value="5">5 People</option></select></div></div>
 <div class="grid">
 <div class="field"><label>COUNTRY</label><select id="country">
 <option value="">Select Country</option>
@@ -155,14 +149,22 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div class="field"><label>COMPLETE DELIVERY ADDRESS</label><textarea id="address" rows="3" placeholder="House/Flat No., Street, Area, City, State, PIN/ZIP Code"></textarea></div>
 </div>
 <div class="field"><label>SPECIAL INSTRUCTIONS</label><textarea id="instructions" rows="3" placeholder="Any special request for the artwork or delivery (optional)"></textarea></div>
-<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
+<div class="field"><label>PAYMENT OPTION</label><select id="paymentOption" onchange="updatePaymentOption()"><option value="advance" selected>Advance Payment</option></select></div><div id="advanceBox" class="field" style="display:block"><label>ADVANCE</label><select id="advanceAmount" onchange="calc()"><option value="25">25% Advance</option><option value="50">50% Advance</option><option value="100">100% Full Advance</option></select></div><div id="payNowSection" class="field" style="border:2px solid #d8b36a;border-radius:16px;padding:18px;background:linear-gradient(135deg,#fffaf0,#fff);margin-top:14px;">
+<label style="font-size:18px;font-weight:800;display:block;margin-bottom:8px">💳 PAY NOW</label>
+<p style="margin:0 0 10px">Selected advance amount: <strong>₹<span id="payNowAmount">200</span></strong></p>
+<div style="text-align:center"><img src="assets/SamsungPay_QR.png" alt="UPI QR Code" style="width:190px;max-width:80%;border-radius:12px;border:1px solid #ddd;background:#fff;padding:8px"></div>
+<p style="text-align:center;margin:10px 0 4px"><strong>UPI ID:</strong> poweredbysamsung05@pingpay</p>
+<a id="upiPayButton" href="upi://pay?pa=poweredbysamsung05@pingpay&pn=SHORYA%20KARDAM&cu=INR" style="display:block;text-align:center;text-decoration:none;padding:13px 16px;border-radius:12px;background:#111;color:#fff;font-weight:800;margin-top:12px">📲 Open UPI App & Pay</a>
+<small style="display:block;text-align:center;margin-top:8px;opacity:.75">Payment complete karne ke baad neeche payment screenshot upload karein.</small>
+</div>
+<div class="field"><label>REFERENCE PHOTO *</label><input id="referencePhoto" type="file" accept="image/jpeg,image/png,image/webp"><small id="photoStatus" style="display:block;margin-top:8px;opacity:.75">Client ki photo Cloudinary par upload hogi aur order ke saath link share hoga.</small></div>
 <div class="field"><label>PAYMENT SCREENSHOT / RECEIPT *</label><input id="paymentScreenshot" type="file" accept="image/jpeg,image/png,image/webp"><small id="paymentStatus" style="display:block;margin-top:8px;opacity:.75">Payment karne ke baad screenshot/receipt upload karna mandatory hai.</small></div>
-<div class="total">Artwork: ₹<span id="total">799</span> + Delivery charges</div>
+<div class="total" style="line-height:1.8">Artwork: ₹<span id="artworkTotal">799</span><br>Delivery: ₹<span id="deliveryTotal">100</span><br><strong>Payable now: ₹<span id="payableNow">200</span></strong><small id="paymentBreakdown" style="display:block;font-size:12px;opacity:.8">25% advance on artwork; delivery is added only with 100% payment.</small></div>
 <button type="button" onclick="placeOrder()">📲 Send My Order on WhatsApp →</button>
 <div class="mini-note">Reference photo + payment receipt are uploaded before the WhatsApp order is prepared.</div>
 </div></section>
 
-<div class="sticky-order"><a href="#order">🎨 Order Your Custom Portrait Starting ₹599 — Starting ₹699</a></div>
+<div class="sticky-order"><a href="#order">🎨 Order Your Custom Portrait — Starting ₹699</a></div>
 <footer>© 2026 Shorya Art Studio • Custom Handmade Artwork
 <section class="instagram-section" id="instagram">
   <div class="container">
@@ -200,12 +202,38 @@ const CLOUDINARY_UPLOAD_PRESET = "Shorya art orders";
 const OWNER_WHATSAPP = "919997102310";
 const art = document.getElementById("art");
 const people = document.getElementById("people");
-const total = document.getElementById("total");
+const artworkTotal = document.getElementById("artworkTotal");
+const deliveryTotal = document.getElementById("deliveryTotal");
+const payableNow = document.getElementById("payableNow");
+const paymentBreakdown = document.getElementById("paymentBreakdown");
 
-function calc(){ total.textContent = Math.round(Number(art.value) * Number(people.value)); }
-art.onchange = calc; people.onchange = calc;
+function getDelivery(){
+  const country = document.getElementById("country").value.trim().toLowerCase();
+  return country === "india" ? 100 : (country ? 1500 : 0);
+}
+function calc(){
+  const artworkPrice = Math.round(Number(art.value));
+  const delivery = getDelivery();
+  const advancePct = Number(document.getElementById("advanceAmount").value || 25);
+  const dueNow = advancePct === 100 ? artworkPrice + delivery : Math.round(artworkPrice * advancePct / 100);
+  artworkTotal.textContent = artworkPrice.toLocaleString("en-IN");
+  deliveryTotal.textContent = delivery ? delivery.toLocaleString("en-IN") : "—";
+  payableNow.textContent = dueNow.toLocaleString("en-IN");
+  const payNowAmount = document.getElementById("payNowAmount");
+  if(payNowAmount) payNowAmount.textContent = dueNow.toLocaleString("en-IN");
+  const upiPayButton = document.getElementById("upiPayButton");
+  if(upiPayButton) upiPayButton.href = "upi://pay?pa=poweredbysamsung05@pingpay&pn=SHORYA%20KARDAM&am=" + dueNow + "&cu=INR";
+  paymentBreakdown.textContent = advancePct === 100
+    ? "100% full advance: artwork + full delivery included."
+    : `${advancePct}% advance on artwork: delivery is not included in this advance.`;
+}
+art.onchange = calc;
+people.onchange = calc;
+document.getElementById("country").onchange = calc;
+document.getElementById("advanceAmount").onchange = calc;
+calc();
 function cleanPhone(value){ return value.replace(/[^\d+]/g, "").trim(); }
-function updatePaymentOption(){ document.getElementById("advanceBox").style.display="block"; }
+function updatePaymentOption(){ document.getElementById("advanceBox").style.display="block"; calc(); }
 
 async function uploadToCloudinary(file, statusId, label){
   if(!file) throw new Error(label + " is missing.");
@@ -252,7 +280,7 @@ async function placeOrder(){
     const orderId = "SA-" + Date.now().toString().slice(-8);
     const artworkName = art.options[art.selectedIndex].text;
     const peopleText = people.options[people.selectedIndex].text;
-    const artworkPrice = Math.round(Number(art.value) * Number(people.value));
+    const artworkPrice = Math.round(Number(art.value));
 
     const orderRecord = {
       orderId, name, customerWhatsApp, country, address, instructions, artworkName,
@@ -262,13 +290,13 @@ async function placeOrder(){
     const existingOrders = JSON.parse(localStorage.getItem("shoryaOrders") || "[]");
     existingOrders.unshift(orderRecord);
     localStorage.setItem("shoryaOrders", JSON.stringify(existingOrders.slice(0, 200)));
-    const delivery = country.toLowerCase() === "india" ? ₹80 : 1500;
+    const delivery = country.toLowerCase() === "india" ? 100 : 1500;
     const advancePct = Number(advance);
-    const payableNow = advancePct === 100 ? artworkPrice + delivery : Math.round(artworkPrice * advancePct / 100);
+    const payableAmount = advancePct === 100 ? artworkPrice + delivery : Math.round(artworkPrice * advancePct / 100);
     const dbPayload = {
       order_id: orderId, customer_name: name, whatsapp: customerWhatsApp, country, address, instructions,
       artwork: artworkName, size: artworkName.includes("A3") ? "A3" : "A4",
-      people: Math.max(1, Math.round(Number(people.value))), total: payableNow,
+      people: Math.max(1, Math.round(Number(people.value))), total: payableAmount,
       payment_option: `${advancePct}% Advance`, reference_url: photoUrl,
       payment_screenshot_url: paymentUrl, status: "PENDING"
     };
@@ -289,8 +317,9 @@ async function placeOrder(){
 🎨 Artwork: ${artworkName}
 👥 People: ${peopleText}
 💰 Artwork Total: ₹${artworkPrice}
-🚚 Delivery: Separate (as applicable)
+🚚 Delivery: ₹${delivery} (${country === "India" ? "India" : "Outside India"})
 💳 Advance: ${advance}%
+💵 Payable Now: ₹${payableAmount}
 
 📍 Delivery Address:
 ${address}
@@ -325,10 +354,4 @@ function cod(){ document.getElementById("codBox").style.display="block"; documen
 <div class="confirmation-payment-note">
 <strong>💳 Advance payment required</strong>
 <p>Selected advance payment is required before the order is submitted.</p>
-</div><section style="margin:24px 0;padding:20px;border:1px solid #ead9b0;border-radius:18px;background:#fffaf0">
-<h3 style="margin-top:0">📐 Portrait Size Guide</h3>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
-<div><strong>A4</strong><br>21 × 29.7 cm<br>Small portrait</div>
-<div><strong>A3</strong><br>29.7 × 42 cm<br>Medium portrait</div>
-<div><strong>A2</strong><br>42 × 59.4 cm<br>Large portrait</div>
-</div></section></body></html>
+</div></body></html>

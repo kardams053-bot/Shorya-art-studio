@@ -118,33 +118,8 @@ footer{text-align:center;padding:28px;background:#17120f;color:#cfc5bb;font:13px
 <div class="form">
 <div class="grid"><div class="field"><label>YOUR NAME</label><input id="name" placeholder="Your name"></div><div class="field"><label>WHATSAPP NUMBER</label><input id="customerWhatsApp" type="tel" placeholder="+91 XXXXX XXXXX" autocomplete="tel"></div></div>
 <div class="grid"><div class="field"><label>ARTWORK</label><select id="art">
-<option value="599">Pencil Sketch Portrait — A4</option>
-<option value="1199">Pencil Sketch Portrait — A3</option>
-<option value="999">Pencil Colour Portrait — A4</option>
-<option value="1599">Pencil Colour Portrait — A3</option>
-<option value="799">Pen Sketch Portrait — A4</option>
-<option value="1399">Pen Sketch Portrait — A3</option>
-<option value="1299">Oil Pastel Portrait — A4</option>
-<option value="1999">Oil Pastel Portrait — A3</option>
-<option value="1299">Couple Pencil Sketch — A4</option>
-<option value="1999">Couple Pencil Sketch — A3</option>
-<option value="2999">Couple Pencil Sketch — A2</option>
-<option value="1599">Couple Pencil Colour — A4</option>
-<option value="2399">Couple Pencil Colour — A3</option>
-<option value="3899">Couple Pencil Colour — A2</option>
-<option value="1799">Couple Oil Pastel — A4</option>
-<option value="2699">Couple Oil Pastel — A3</option>
-<option value="3599">Couple Oil Pastel — A2</option>
-<option value="1599">Family Pencil Sketch — A4</option>
-<option value="2499">Family Pencil Sketch — A3</option>
-<option value="3299">Family Pencil Sketch — A2</option>
-<option value="1899">Family Pencil Colour — A4</option>
-<option value="2899">Family Pencil Colour — A3</option>
-<option value="3899">Family Pencil Colour — A2</option>
-<option value="2199">Family Oil Pastel — A4</option>
-<option value="3299">Family Oil Pastel — A3</option>
-<option value="3799">Family Oil Pastel — A2</option>
-</select></div><div class="field"><label>PEOPLE</label><select id="people"><option value="1">1 Person</option><option value="1.55">2 People</option></select></div></div>
+<option value="599">Pencil Sketch Portrait — A4</option><option value="1199">Pencil Sketch Portrait — A3</option><option value="999">Pencil Colour Portrait — A4</option><option value="1599">Pencil Colour Portrait — A3</option><option value="799">Pen Sketch Portrait — A4</option><option value="1399">Pen Sketch Portrait — A3</option><option value="1299">Oil Pastel Portrait — A4</option><option value="1999">Oil Pastel Portrait — A3</option><option value="1299">Couple Pencil Sketch — A4</option><option value="1999">Couple Pencil Sketch — A3</option><option value="2999">Couple Pencil Sketch — A2</option><option value="1599">Couple Pencil Colour — A4</option><option value="2399">Couple Pencil Colour — A3</option><option value="3899">Couple Pencil Colour — A2</option><option value="1799">Couple Oil Pastel — A4</option><option value="2699">Couple Oil Pastel — A3</option><option value="3599">Couple Oil Pastel — A2</option><option value="2499">Family Pencil Sketch — A3</option><option value="3299">Family Pencil Sketch — A2</option><option value="2899">Family Pencil Colour — A3</option><option value="3899">Family Pencil Colour — A2</option><option value="3299">Family Oil Pastel — A3</option><option value="3799">Family Oil Pastel — A2</option>
+</select><div style="margin-top:8px;font-weight:700">Selected artwork price: ₹<span id="artPriceAuto">599</span></div></div><div class="field"><label>PEOPLE</label><select id="people"><option value="1">1 Person</option><option value="1.55">2 People</option></select></div></div>
 <div class="grid">
 <div class="field"><label>COUNTRY</label><select id="country">
 <option value="">Select Country</option>
@@ -331,4 +306,11 @@ function cod(){ document.getElementById("codBox").style.display="block"; documen
 <div><strong>A4</strong><br>21 × 29.7 cm<br>Small portrait</div>
 <div><strong>A3</strong><br>29.7 × 42 cm<br>Medium portrait</div>
 <div><strong>A2</strong><br>42 × 59.4 cm<br>Large portrait</div>
-</div></section></body></html>
+</div></section><script>
+function shoryaAutoPrice(){
+ const a=document.getElementById('art'), out=document.getElementById('artPriceAuto');
+ if(out&&a) out.textContent=Number(a.value||0).toLocaleString('en-IN');
+ try{ if(typeof calc==='function') calc(); }catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{ ['art','people','payment','paymentOption'].forEach(id=>{const e=document.getElementById(id);if(e){e.addEventListener('change',shoryaAutoPrice);e.addEventListener('input',shoryaAutoPrice);}}); shoryaAutoPrice(); });
+</script></body></html>

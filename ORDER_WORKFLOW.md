@@ -1,10 +1,11 @@
-# Shorya Art Studio — New Order Notification
+# ORDER WORKFLOW
+1. Customer selects artwork, size and people.
+2. Enters country, complete address and special instructions.
+3. Uploads reference photo.
+4. Places order.
+5. Artist completes the sketch and sends a preview/confirmation request.
+6. Customer confirms the completed sketch.
+7. Payment is requested/unlocked only after confirmation.
+8. After payment confirmation, final artwork and delivery proceed.
 
-- Customer order is saved to Supabase `orders`.
-- Admin panel (`admin.html`) uses Supabase authentication with admin email `Kardams053@gmail.com`.
-- New pending orders are checked every 10 seconds while the admin panel is open.
-- New order notification: browser notification + sound + banner.
-- Confirm & Notify updates order status to `CONFIRMED` and opens WhatsApp to the customer's saved WhatsApp number with the confirmation message.
-- Reject & Notify updates order status to `REJECTED` and opens WhatsApp to the customer's saved WhatsApp number.
-- Browser notifications require the user to allow notifications.
-- Supabase RLS must allow authenticated admin SELECT/UPDATE using the existing admin-email policies.
+For live orders, connect a real backend, secure photo storage, notifications and payment gateway.
